@@ -26,15 +26,26 @@ namespace SzhGyak2
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseHttpsRedirection();
+
+            DefaultFilesOptions options = new DefaultFilesOptions();
+            options.DefaultFileNames.Clear();
+            options.DefaultFileNames.Add("cv.html");
+            app.UseDefaultFiles(options);
+            app.UseStaticFiles();
+
+            //app.UseDefaultFiles();
+            //app.UseStaticFiles(); //A sorrend fontos!
+
             app.UseRouting();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
-            });
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapGet("/", async context =>
+            //    {
+            //        await context.Response.WriteAsync("Hello World!");
+            //    });
+            //});
         }
     }
 }
