@@ -80,12 +80,12 @@ img {
 
 #article {
     text-align: center;
-    background: gold;
+    background-color: yellowgreen;
 }
 
 #aside {
     text-align: left;
-    background-color: lightgreen;
+    background-color: mediumslateblue;
 }
 
 #footer {
