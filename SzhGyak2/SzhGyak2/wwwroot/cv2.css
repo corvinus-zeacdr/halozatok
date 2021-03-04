@@ -1,0 +1,133 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+body {
+    font-weight: bold;
+    text-align: center;
+}
+/*
+div {
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid fuchsia;
+    border-radius: 25px;
+}
+*/
+a {
+    padding: 10px;
+    border-radius: 25px;
+    background-color: blue;
+    color: white;
+}
+
+    a:hover {
+        background-color: fuchsia;
+    }
+
+span {
+    font-weight: bold;
+    font-style: italic;
+    color: fuchsia;
+    font-size: 40px;
+}
+
+img {
+    display: block;
+    margin: auto;
+    max-width:100%;
+    height:auto;
+}
+
+
+
+#listák {
+    background-color: lightgrey;
+}
+
+.masszin {
+    background-color: lightblue;
+    width: 100px;
+    border-radius: 25px;
+}
+
+.sorrend {
+    font-style: italic;
+}
+
+img {
+    display: block;
+    margin: auto;
+}
+
+
+
+#article,
+#aside,
+#footer,
+#header,
+#nav {
+    padding: 20px;
+}
+
+#header {
+    background-color: mediumvioletred;
+}
+
+#nav {
+    background: deepskyblue;
+}
+
+#article {
+    text-align: center;
+    background: gold;
+}
+
+#aside {
+    text-align: left;
+    background-color: lightgreen;
+}
+
+#footer {
+    background: hotpink;
+}
+
+/* menü */
+#nav {
+    display: flex;
+}
+
+    #nav a {
+        /* ugyanaz, mint flex-grow:1; flex-shrink:1;flex-basis:auto;*/
+        flex: 1 1 auto;
+        text-decoration: none;
+        color: black;
+    }
+
+/* 800px-nél nagyobb képernyő*/
+@media screen and (min-width: 800px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        max-width: 1500px;
+        margin: auto;
+    }
+
+    #main {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #nav,
+    #header {
+        order: -1;
+    }
+
+    #article {
+        flex: 1 1 75%;
+    }
+
+    #aside {
+        flex: 1 1 25%;
+    }
+}
