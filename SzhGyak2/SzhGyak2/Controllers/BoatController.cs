@@ -12,6 +12,17 @@ namespace SzhGyak2.Controllers
     [ApiController]
     public class BoatController : ControllerBase
     {
+
+        [HttpGet]
+        [Route("questions/count")]
+        public int M4() //Tetszőleges metódusnév
+        {
+            hajostesztContext context = new hajostesztContext();
+            int kérdésekSzáma = context.Questions.Count();
+
+            return kérdésekSzáma;
+        } 
+
         [HttpGet]
         [Route("questions/all")]
         public ActionResult M1()
