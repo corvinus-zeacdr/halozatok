@@ -53,6 +53,30 @@ function init() {
     }
 }
 
+
+function kérdésBetöltés(questionNumber, destination) {
+    fetch(`/questions/${questionNumber}`)
+        .then(
+            result => {
+                if (!result.ok) {
+                    console.error(`Hibás letöltés: ${response.status}`);
+                    return null;
+                }
+                else {
+                    return result.json();
+                }
+            })
+        .then(q => {
+            hotList[destination].question = q;
+            hotList[destination].goodAnswers = 0;
+            console.log(`A ${questionNumber}. kérdés letöltve a hot list ${destination}. helyére`);
+            if (displayedQuestion === undefined && destination === 0) {
+                displayedQuestion = 0;
+                kérdésMegjelenítés();
+            }
+        })
+}   
+
 function kérdésMegjelenítés() {
 
 
@@ -159,25 +183,4 @@ function Clear() {
 }
 
 
-function kérdésBetöltés(questionNumber, destination) {
-    fetch(`/questions/${questionNumber}`)
-        .then(
-            result => {
-                if (!result.ok) {
-                    console.error(`Hibás letöltés: ${response.status}`);
-                    return null;
-                }
-                else {
-                    return result.json();
-                }
-            })
-        .then(q => {
-            hotList[destination].question = q;
-            hotList[destination].goodAnswers = 0;
-            console.log(`A ${questionNumber}. kérdés letöltve a hot list ${destination}. helyére`);
-            if (displayedQuestion === undefined && destination === 0) {
-                displayedQuestion = 0;
-                kérdésMegjelenítés();
-            }
-        })
-}   
+
