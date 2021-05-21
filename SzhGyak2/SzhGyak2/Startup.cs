@@ -31,7 +31,7 @@ namespace SzhGyak2
 
             DefaultFilesOptions options = new DefaultFilesOptions();
             options.DefaultFileNames.Clear();
-            options.DefaultFileNames.Add("jokes.html");
+            options.DefaultFileNames.Add("allatok.html");
             app.UseDefaultFiles(options);
             app.UseStaticFiles();
 

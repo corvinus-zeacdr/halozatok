@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <form>
+        <div id="allatokList"></div>
+        <div>
+            <input id="allatokText" type="text" placeholder="Allat neve" />
+            <input id="AllatSK" type="text" placeholder="Allat id" />
+        </div>
+        <button id="addButton" onclick="Hozzaad()">Új állat felvétele</button>
+        <button id="deleteButton" onclick="torles()">Állat törlése</button>
+    </form>
+    <script>
+
+        function AllatokBetoltes() {
+            fetch('api/allatok')
+                .then(result => {
+                    if (!result.ok) {
+                        console.error('Hibás letöltés: ${ result.status }');
+                        return null;
+                    }
+                    else {
+                        return result.json();
+                    }
+                })
+                .then(data => {
+                    for (var i = 0; i < data.length; i++) {
+                        document.getElementById("allatokList").innerHTML += data[i].allatSk + " " + data[i].allatNevek + "<br/>"
+                    }
+                })
+        }
+
+
+        window.onload = () => {
+            AllatokBetoltes();
+        }
+
+
+        function Hozzaad() {
+
+            let data = {
+                allatNevek: document.getElementById('allatokText').value
+            }
+            console.log(data);
+
+
+            fetch('api/allatok',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                }
+            );
+            AllatokBetoltes();
+        }
+
+
+        function torles() {
+            let data = {
+                allatSk: parseInt(document.getElementById("AllatSK").value)
+            }
+            console.log(data);
+            console.log(data.allatSk);
+            fetch('api/allatok/' + data.allatSk, {
+                method: 'DELETE',
+            })
+                .then(res => res.text())
+                .then(res => console.log(res));
+        }
+
+        
+
+
+    </script>
+</body>
+</html>
