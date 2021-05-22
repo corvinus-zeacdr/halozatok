@@ -58,5 +58,15 @@ namespace SzhGyak2.Controllers
             context.Remove(törlendőÁllat);
             context.SaveChanges();
         }
+
+        [HttpGet]
+        [Route("count")]
+        public int AllatokSzama()
+        {
+            StudentContext context = new StudentContext();
+            int allatszam = context.Allatoks.Count();
+
+            return allatszam;
+        }
     }
 }
